@@ -3,8 +3,16 @@
     height: 80vh;
 }
 
+.margem{
+    top: 20%;
+}
+
 @media(max-width: 576px){
     .carrossel{
         height: 100%;
+    }
+
+    .margem{
+        top: 20%;
     }
 }

@@ -1,6 +1,6 @@
 <header>
     <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
-        <a class="navbar-brand" href="./home.php">
+        <a class="navbar-brand" href="../Home/home.php">
             VAGAS DE EMPREGO
         </a>
 
@@ -14,7 +14,7 @@
             <div class="inline my-2 my-lg-0">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item mr-2">
-                        <a class="nav-link" href="./home.php"><i class="bi-house-fill"></i> Início</a>
+                        <a class="nav-link" href="../Home/home.php"><i class="bi-house-fill"></i> Início</a>
                     </li>
 
                     <li class="nav-item mr-2">
@@ -26,7 +26,7 @@
                         if(!isset($_SESSION['logado'])):
                     ?>
                         <li class="nav-item mr-2">
-                            <a class="nav-link btn btn-sm btn-light text-primary" href="../Login/login.php"><i class="bi-person-fill"></i> Login</a>
+                            <a class="nav-link btn btn-sm btn-light text-primary" href="./login.php"><i class="bi-person-fill"></i> Login</a>
                         </li>
                     <?php
                         endif;

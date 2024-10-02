@@ -19,6 +19,7 @@
     ?>
 
     <div id="carrossel" class="carousel slide carousel-fade" data-ride="carousel">
+        
         <!-- botoes -->
         <div class="carousel-indicators">
             <button type="button" data-bs-target="#carrossel" 
@@ -80,24 +81,27 @@
     </div>
 
      <div class="container">
+        <?php
+            include('../../assets/alerts/homeAlert.php');
+        ?>
         <!-- CARDSSSSS -->
         <div class="row justify-content-center p-5 my-5 text-center">
             <div class="col-md-4 mb-5">
-                <img src="../img/2.png" alt="" class="rounded-circle mb-3" width="140" height="140">
+                <img src="../../assets/img/lojasicon.png" alt="" class="rounded-circle mb-3" width="140" height="140">
                 <h5>NOME DO COMERCIAL</h5>
                 <p>ENDEREÇO AQUI</p>
                 <a href="###" class="btn btn-primary"><i class="bi-phone"></i> Entre em contato</a>
             </div>
 
             <div class="col-md-4 mb-5">
-                <img src="../img/2.png" alt="" class="rounded-circle mb-3" width="140" height="140">
+                <img src="../../assets/img/lojasicon.png" alt="" class="rounded-circle mb-3" width="140" height="140">
                 <h5>NOME DO COMERCIAL</h5>
                 <p>ENDEREÇO AQUI</p>
                 <a href="###" class="btn btn-primary"><i class="bi-phone"></i> Entre em contato</a>
             </div>
 
             <div class="col-md-4 mb-5">
-                <img src="../img/2.png" alt="" class="rounded-circle mb-3" width="140" height="140">
+                <img src="../../assets/img/lojasicon.png" alt="" class="rounded-circle mb-3" width="140" height="140">
                 <h5>NOME DO COMERCIAL</h5>
                 <p>ENDEREÇO AQUI</p>
                 <a href="###" class="btn btn-primary"><i class="bi-phone"></i> Entre em contato</a>
@@ -121,49 +125,6 @@
                     <a href="###" class="btn btn-primary align-itens-end"><i class="bi-box-arrow-up-right"></i> Candidatar-se</a>
                 </div>
             </div>
-            
-            <div class="col-11 col-md-12 d-md-flex border rounded p-3 mb-3">
-                <div class="col-12 col-md-8">
-                    <h4>Exemplo de vaga disponível</h4>
-                    <h6>Loja que vai ser</h6>
-                    <p class="mb-2">Carga horária</p>
-                    <p class="text-muted">Aqui vai alguma descrição da vaga se tiver, se nao tiver tudo bem...</p>
-                    <p class="text-muted mt-4"><i class="bi-calendar3"></i> 24/09/24</p>
-                </div>
-                
-                <div class="col-12 col-md-4 text-end">
-                    <a href="###" class="btn btn-primary align-itens-end"><i class="bi-box-arrow-up-right"></i> Candidatar-se</a>
-                </div>
-            </div>
-
-            <div class="col-11 col-md-12 d-md-flex border rounded p-3 mb-3">
-                <div class="col-12 col-md-8">
-                    <h4>Exemplo de vaga disponível</h4>
-                    <h6>Loja que vai ser</h6>
-                    <p class="mb-2">Carga horária</p>
-                    <p class="text-muted">Aqui vai alguma descrição da vaga se tiver, se nao tiver tudo bem...</p>
-                    <p class="text-muted mt-4"><i class="bi-calendar3"></i> 24/09/24</p>
-                </div>
-                
-                <div class="col-12 col-md-4 text-end">
-                    <a href="###" class="btn btn-primary align-itens-end"><i class="bi-box-arrow-up-right"></i> Candidatar-se</a>
-                </div>
-            </div>
-
-            <div class="col-11 col-md-12 d-md-flex border rounded p-3 mb-3">
-                <div class="col-12 col-md-8">
-                    <h4>Exemplo de vaga disponível</h4>
-                    <h6>Loja que vai ser</h6>
-                    <p class="mb-2">Carga horária</p>
-                    <p class="text-muted">Aqui vai alguma descrição da vaga se tiver, se nao tiver tudo bem...</p>
-                    <p class="text-muted mt-4"><i class="bi-calendar3"></i> 24/09/24</p>
-                </div>
-                
-                <div class="col-12 col-md-4 text-end">
-                    <a href="###" class="btn btn-primary align-itens-end"><i class="bi-box-arrow-up-right"></i> Candidatar-se</a>
-                </div>
-            </div>
-         </div>
      </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

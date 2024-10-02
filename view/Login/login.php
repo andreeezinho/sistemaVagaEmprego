@@ -1,5 +1,5 @@
 <?php
-
+    session_start();
 ?>
 
 <!DOCTYPE html>
@@ -19,14 +19,18 @@
     ?>
     
     <div class="container">
+        
         <div class="row justify-content-center">
             <div class="col-sm-3 p-3 text-center position-absolute start-50 top-50 translate-middle">
+                <?php
+                    include('../../assets/alerts/loginAlert.php');
+                ?>
                 <div class="card">
                     <div class="card-body">
                         <i class="bi-person-circle display-4 text-primary"></i>
                         <h4 class="mt-5">Login</h4>
 
-                        <form action="../../config/control/loginConfig.php" method="POST">
+                        <form action="../../config/control/loginControl.php" method="POST">
                             <div class="form-floating mb-2">
                                 <input type="text" name="cpf" id="cpf" class="form-control">
                                 <label for="cpf">Insira seu CPF</label>

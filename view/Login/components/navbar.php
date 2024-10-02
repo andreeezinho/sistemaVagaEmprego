@@ -36,7 +36,7 @@
                         if(isset($_SESSION['logado'])):
                     ?>
                         <li class="nav-item mr-2">
-                            <a class="nav-link btn btn-sm btn-danger text-light" href=""><i class="bi-door-open-fill"></i> Sair</a>
+                            <a class="nav-link btn btn-sm btn-danger text-light" href="../../config/control/logout.php"><i class="bi-door-open-fill"></i> Sair</a>
                         </li>
                     <?php
                         endif;

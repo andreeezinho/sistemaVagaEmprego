@@ -24,6 +24,8 @@
         header('Location: ../../view/Home/home.php');
         exit();
     }else{
+        $_SESSION['loginInvalido'] = true;
+        
         header('Location: ../../view/Login/login.php');
         exit();
     }

@@ -1,0 +1,10 @@
+.carrossel{
+    filter: brightness(20%); 
+    height: 80vh;
+}
+
+@media(max-width: 576px){
+    .carrossel{
+        height: 100%;
+    }
+}

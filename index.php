@@ -5,5 +5,5 @@
 
     include('./config/db.php');
 
-    header('Location: ./view/Home');
+    header('Location: ./view/Home/home.php');
     exit();

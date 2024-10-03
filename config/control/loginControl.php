@@ -11,16 +11,23 @@
     $sql = "select * from usuario where cpf = '$cpf' and senha = MD5('$senha')";
 
     //executar comando
-    $result = mysqli_query($conexao, $sql);
+    $query = mysqli_query($conexao, $sql);
 
     //verificar
-    $verifica = mysqli_num_rows($result);
+    $verifica = mysqli_num_rows($query);
 
     if($verifica == 1){
-        $usuario_bd = mysqli_fetch_assoc($result);
+        $usuario_bd = mysqli_fetch_assoc($query);
 
         //sessao de logado
         $_SESSION['logado'] = true;
+        $_SESSION['idUsuario'] = $usuario_bd['idUsuario'];
+        $_SESSION['nomeUsuario'] = $usuario_bd['nomeUsuario'];
+        $_SESSION['email'] = $usuario_bd['email'];
+        $_SESSION['telefone'] = $usuario_bd['telefone'];
+        $_SESSION['endereco'] = $usuario_bd['endereco'];
+
+
         header('Location: ../../view/Home/home.php');
         exit();
     }else{

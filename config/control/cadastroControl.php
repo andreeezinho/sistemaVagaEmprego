@@ -23,10 +23,10 @@
     $sql = "select count(*) as verificaUsuario from usuario where cpf = '$cpf'";
 
     //executar
-    $result = mysqli_query($conexao, $sql);
+    $query = mysqli_query($conexao, $sql);
 
     //verificar se há algum usuario
-    $row = mysqli_fetch_assoc($result);
+    $row = mysqli_fetch_assoc($query);
 
     if($row['verificaUsuario'] != 0){
         //sessao cadastrado

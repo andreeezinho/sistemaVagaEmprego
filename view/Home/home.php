@@ -122,7 +122,7 @@
                 </div>
                 
                 <div class="col-12 col-md-4 text-end">
-                    <a href="###" class="btn btn-primary align-itens-end"><i class="bi-box-arrow-up-right"></i> Candidatar-se</a>
+                    <a href="../Vaga/vaga.php" class="btn btn-primary align-itens-end"><i class="bi-box-arrow-up-right"></i> Candidatar-se</a>
                 </div>
             </div>
      </div>

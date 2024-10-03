@@ -2,7 +2,7 @@
     if(isset($_SESSION['loginInvalido'])):
 ?>
     <div class="alert alert-danger alert-dismissible fade show">
-        <p class="p-0 m-0">Cadastro inválido, tente novamente...</p>
+        <p class="p-0 m-0">Login inválido, tente novamente...</p>
 
         <button type="button" class="btn-close m-0 pt-2" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>

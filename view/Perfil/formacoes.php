@@ -97,7 +97,7 @@
                     
                     <div class="col-12 col-md-4 text-end">
                         <a href="###" class="btn btn-primary align-itens-end"><i class="bi-pencil"></i> Editar</a>
-                        <a href="###" class="btn btn-danger align-itens-end"><i class="bi-trash"></i> Editar</a>
+                        <a href="###" class="btn btn-danger align-itens-end"><i class="bi-trash"></i> Excluir</a>
                     </div>
                 </div>
             <?php

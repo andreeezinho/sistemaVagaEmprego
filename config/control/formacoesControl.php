@@ -25,9 +25,12 @@
     //executa e valida comando
 
     if($conexao->query($sql) === TRUE){    
+        //usando a sessao de erro, mas é pra se o cadastro for OK
+        $_SESSION['perfilSucesso'] = 'Formação acadêmica cadastrada com sucesso!';
+
         //fechar conexao com banco de dados
         $conexao->close();
 
-        header('Location: ../../view/Perfil/experiencias.php');
+        header('Location: ../../view/Perfil/formacoes.php');
         exit();
     }

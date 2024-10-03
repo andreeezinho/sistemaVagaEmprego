@@ -1,5 +1,6 @@
 <?php
     session_start();
+    require('../../config/db.php');
 ?>
 
 <!DOCTYPE html>
@@ -60,7 +61,7 @@
 
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-warning mt-4"><i class="bi-plus"></i> Adicionar</button>
-                                    <a href="./experiencias.php" class="btn btn-primary mt-4">Continuar <i class="bi-arrow-right"></i></a>
+                                    <a href="./experiencias.php" class="btn btn-primary mt-4">Ir para Experiências <i class="bi-arrow-right"></i></a>
                                 </div>
                             </form>
                         </div>
@@ -71,47 +72,47 @@
         <div class="row justify-content-center">
             <h2 class="text-center my-5 py-3 border-top border-bottom">Suas formações</h2>
             
-            <div class="col-11 col-md-12 d-md-flex border rounded p-3 mb-3">
-                <div class="col-12 col-md-8">
-                    <h4>Nome da instituição</h4>
-                    <p class="text-muted mt-3">Curso que a pessoa fez</p>
-                    <p class="text-muted mt-3"><i class="bi-calendar3"></i> Início: 24/09/24</p>
-                    <p class="text-muted"><i class="bi-calendar3"></i> Fim: 24/09/24</p>
-                </div>
-                
-                <div class="col-12 col-md-4 text-end">
-                    <a href="###" class="btn btn-primary align-itens-end"><i class="bi-pencil"></i> Editar</a>
-                    <a href="###" class="btn btn-danger align-itens-end"><i class="bi-trash"></i> Editar</a>
-                </div>
-            </div>
+            <?php
+                //id do usuario na sessao
+                $idUsuario = $_SESSION['idUsuario'];
 
-            <div class="col-11 col-md-12 d-md-flex border rounded p-3 mb-3">
-                <div class="col-12 col-md-8">
-                    <h4>Nome da instituição</h4>
-                    <p class="text-muted mt-3">Curso que a pessoa fez</p>
-                    <p class="text-muted mt-3"><i class="bi-calendar3"></i> Início: 24/09/24</p>
-                    <p class="text-muted"><i class="bi-calendar3"></i> Fim: 24/09/24</p>
-                </div>
-                
-                <div class="col-12 col-md-4 text-end">
-                    <a href="###" class="btn btn-primary align-itens-end"><i class="bi-pencil"></i> Editar</a>
-                    <a href="###" class="btn btn-danger align-itens-end"><i class="bi-trash"></i> Editar</a>
-                </div>
-            </div>
+                //comando sql
+                $sql = "select * from formacao where idUsuario = '$idUsuario'";
 
-            <div class="col-11 col-md-12 d-md-flex border rounded p-3 mb-3">
-                <div class="col-12 col-md-8">
-                    <h4>Nome da instituição</h4>
-                    <p class="text-muted mt-3">Curso que a pessoa fez</p>
-                    <p class="text-muted mt-3"><i class="bi-calendar3"></i> Início: 24/09/24</p>
-                    <p class="text-muted"><i class="bi-calendar3"></i> Fim: 24/09/24</p>
+                //executar comando
+                $query = mysqli_query($conexao, $sql);
+
+                //verificar se há alguma formacao do usuario
+                if(mysqli_num_rows($query) > 0){
+                    //printar as formacoes
+                    foreach($query as $info){
+            ?>
+                <div class="col-11 col-md-12 d-md-flex border rounded p-3 mb-3">
+                    <div class="col-12 col-md-8">
+                        <h4><?=$info['nomeInstituicao'] ?></h4>
+                        <p class="text-muted mt-3"><b>Curso: </b><?=$info['curso'] ?></p>
+                        <p class="text-muted mt-3"><i class="bi-calendar3"></i> <?=date('d/m/y', strtotime($info['dataInicio'])) ?></p>
+                        <p class="text-muted"><i class="bi-calendar3"></i> <?=date('d/m/y', strtotime($info['dataTermino'])) ?></p>
+                    </div>
+                    
+                    <div class="col-12 col-md-4 text-end">
+                        <a href="###" class="btn btn-primary align-itens-end"><i class="bi-pencil"></i> Editar</a>
+                        <a href="###" class="btn btn-danger align-itens-end"><i class="bi-trash"></i> Editar</a>
+                    </div>
                 </div>
-                
-                <div class="col-12 col-md-4 text-end">
-                    <a href="###" class="btn btn-primary align-itens-end"><i class="bi-pencil"></i> Editar</a>
-                    <a href="###" class="btn btn-danger align-itens-end"><i class="bi-trash"></i> Editar</a>
-                </div>
-            </div>
+            <?php
+                    }
+                }else{
+                    echo '
+                            <div class="col-11 col-md-12 d-md-flex border rounded p-3 mb-3">
+                                <div class="col-12 col-md-8">
+                                    <h4>Você ainda não tem formações acadêmicas cadastradas</h4>
+                                    <p class="mt-3">Cadastre-as para poder ver e editar aqui</p>
+                                </div>
+                            </div>
+                        ';
+                }
+            ?>
         </div>
     </div>
 

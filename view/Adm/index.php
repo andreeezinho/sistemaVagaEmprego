@@ -14,10 +14,6 @@
     <title>Login</title>
 </head>
 <body>
-    <?php
-        include('./components/navbar.php');
-    ?>
-    
     <div class="container">
         
         <div class="row justify-content-center">

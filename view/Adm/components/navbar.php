@@ -23,17 +23,17 @@
 
                     <!-- SE TIVER LOGADO, MOSTRAR BOTAO DE SAIR, SE NAO MOSTRAR BOTAO DE LOGIN -->
                     <?php
-                        if(!isset($_SESSION['logado'])):
+                        if(!isset($_SESSION['adm'])):
                     ?>
                         <li class="nav-item mr-2">
-                            <a class="nav-link btn btn-sm btn-light text-primary" href="../Login/login.php"><i class="bi-person-fill"></i> Login</a>
+                            <a class="nav-link btn btn-sm btn-light text-primary" href="../Adm"><i class="bi-person-fill"></i> Login</a>
                         </li>
                     <?php
                         endif;
                     ?>
 
                     <?php
-                        if(isset($_SESSION['logado'])):
+                        if(isset($_SESSION['adm'])):
                     ?>
                         <li class="nav-item mr-2">
                             <a class="nav-link btn btn-sm btn-danger text-light" href="../../config/control/logout.php"><i class="bi-door-open-fill"></i> Sair</a>

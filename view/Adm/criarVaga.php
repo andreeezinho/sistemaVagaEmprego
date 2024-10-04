@@ -1,5 +1,7 @@
 <?php
     include('../../config/control/verificaAdm.php');
+
+    include('../../config/db.php');
 ?>
 
 <!DOCTYPE html>
@@ -21,6 +23,10 @@
     <div class="container mt-5 pt-5">
         <div class="row justify-content-center">
             <div class="col-sm-8 mt-2">
+                <?php
+                    include('../../assets/alerts/admAlert.php');
+                ?>
+
                 <div class="card">
                     <div class="card-body text-center">
                         <i class="bi-window-plus display-4 text-primary"></i>
@@ -94,25 +100,45 @@
         <div class="row justify-content-center">
             <h2 class="text-center mb-5 py-3 border-bottom mt-4">Vagas cadastradas</h2>
 
-            <div class="col-11 col-md-12 d-md-flex border rounded p-3 mb-3">
-                <div class="col-12 col-md-8">
-                    <h4>Nome da vaga</h4>
-                    <h6>Tipo da vaga</h6>
-                    <p class="mb-3">Carga horária: 8h</p>
-                    <p class="text-muted mb-1"><i class="bi-clipboard"></i> Status: aberta</p>
-                    <p class="text-muted mb-1"><i class="bi-person-fill"></i> Vagas disponíveis: 2</p>
-                    <p class="text-muted mb-3"><i class="bi-people-fill"></i> Candidatos: 8</p>
-                    <p class="text-muted mb-1"><i class="bi-calendar3"></i> Início: 24/09/24</p>
-                    <p class="text-muted"><i class="bi-calendar3"></i> Encerramento: 08/10/24</p>
-                    <p class="text-muted ">Aqui vai alguma descrição da vaga se tiver, se nao tiver tudo bem...</p>
+            <?php
+                //comando sql
+                $sql = "select *, nomeAdministrador from vaga inner join administrador on vaga.idAdministrador = administrador.idAdministrador;";
+
+                //executa sql
+                $query = mysqli_query($conexao, $sql);
+
+                if(mysqli_fetch_assoc($query) > 0){
+                    //printar as informacoes
+                    foreach($query as $info){
+            ?>
+
+                <div class="col-11 col-md-12 d-md-flex border rounded p-3 mb-3">
+                    <div class="col-12 col-md-8">
+                        <h4><?=$info['nomeVaga'] ?></h4>
+                        <h6><?=$info['tipoVaga'] ?></h6>
+                        <p class="mb-3">Carga horária: <?=$info['cargaHoraria'] ?></p>
+                        <p class="text-muted mb-3"><i class="bi-person-rolodex"></i> Criada por: <?=$info['nomeAdministrador'] ?></p>
+                        <p class="text-muted mb-1"><i class="bi-clipboard"></i> Status: <?=$info['statusVaga'] ?></p>
+                        <p class="text-muted mb-1"><i class="bi-person-fill"></i> Vagas disponíveis: <?=$info['quantidadeVaga'] ?></p>
+                        <p class="text-muted mb-3"><i class="bi-people-fill"></i> Candidatos: POR ENQUANTO AINDA NAO </p>
+                        <p class="text-muted mb-1"><i class="bi-calendar3"></i> Início: <?=date('d/m/y', strtotime($info['dataAberta'])) ?></p>
+                        <p class="text-muted"><i class="bi-calendar3"></i> Encerramento: <?=date('d/m/y', strtotime($info['dataFechamento'] ))?></p>
+                        <p class="text-muted "><?=$info['descricaoVaga'] ?></p>
+                    </div>
+                    
+                    <div class="col-12 col-md-2 mx-auto text-center d-flex flex-column justify-content-center">
+                        <a href="###" class="btn btn-success align-itens-end mb-1"><i class="bi-eye-fill"></i> Ver candidatos</a>
+                        <a href="###" class="btn btn-primary align-itens-end mb-1"><i class="bi-pencil-fill"></i> Editar</a>
+                        <a href="###" class="btn btn-danger align-itens-end mb-1"><i class="bi-trash-fill"></i> Excluir</a>
+                    </div>
                 </div>
-                
-                <div class="col-12 col-md-4 text-center">
-                    <a href="###" class="btn btn-success align-itens-end mb-1"><i class="bi-eye-fill"></i> Ver candidatos</a>
-                    <a href="###" class="btn btn-primary align-itens-end mb-1"><i class="bi-pencil-fill"></i> Editar</a>
-                    <a href="###" class="btn btn-danger align-itens-end mb-1"><i class="bi-trash-fill"></i> Excluir</a>
-                </div>
-            </div>
+
+            <?php
+                    }
+                }else{
+                    echo 'nada ainda';
+                }
+            ?>
         </div>
     </div>
 

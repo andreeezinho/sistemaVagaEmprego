@@ -21,24 +21,24 @@
     }
 
     //comando sql
-    $sql = "insert into vaga (nomeVaga, tipoVaga, cargaHoraria, descricaoVaga, quantidadeVaga, dataFechamento, statusVaga, dataAberta) 
-            values ('$nomeVaga','$tipoVaga','$cargaHoraria','$descricaoVaga','$quantidadeVaga','$dataFechamento','$statusVaga',NOW())";
+    $sql = "insert into vaga (idAdministrador, nomeVaga, tipoVaga, cargaHoraria, descricaoVaga, quantidadeVaga, dataFechamento, statusVaga, dataAberta) 
+            values ('$idAdministrador','$nomeVaga','$tipoVaga','$cargaHoraria','$descricaoVaga','$quantidadeVaga','$dataFechamento','$statusVaga',NOW())";
 
     //executar comando
-    $query = mysqli_query($conexao, $sql);
-
-    $sql = "select idVaga from vaga where nomeVaga = '$nomeVaga'";
-
-    $query = mysqli_query($conexao, $sql);
-
-    $verifica = mysqli_fetch_assoc($query);
-
-    $idVaga = $verifica['idVaga'];
-
-    $sql = "insert into administradorVaga (idAdministrador, idVaga) values ('$idAdministrador', '$idVaga')";
-
     if($conexao->query($sql) === TRUE){
-        echo 'tudo ok?';
+        $_SESSION['admSucesso'] = 'Vaga foi criada com sucesso!';
+
+        $conexao->close();
+
+        header('Location: ../../view/Adm/criarVaga.php');
+        exit();
+    }else{
+        $_SESSION['admErro'] = 'Erro ao criar vaga, tente novamente';
+        
+        $conexao->close();
+
+        header('Location: ../../view/Adm/criarVaga.php');
+        exit();
     }
 
-    $conexao->close();
+    

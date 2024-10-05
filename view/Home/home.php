@@ -122,13 +122,13 @@
                 $query = mysqli_query($conexao, $sql);
 
                 //verificar
-                if(mysqli_fetch_assoc($query)){
+                if(mysqli_fetch_assoc($query) > 0){
                     //printar
                     foreach($query as $vaga){
             ?>
                 <div class="col-11 col-md-12 d-md-flex border rounded p-3 mb-3">
                     <div class="col-12 col-md-8">
-                        <h4><?=$vaga['nomeVaga'] ?></h4>
+                        <h4 class="mb-3"><?=$vaga['nomeVaga'] ?></h4>
                         <h6><i class="bi-pass-fill"></i> Tipo de vaga: <?=$vaga['tipoVaga'] ?></h6>
                         <p class="mb-2"><i class="bi-clock-fill"></i> Carga horária: <?=$vaga['cargaHoraria'] ?></p>
                         <p class="mb-2"><i class="bi-people-fill"></i> Vagas disponíveis: <?=$vaga['quantidadeVaga'] ?></p>

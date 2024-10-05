@@ -43,11 +43,13 @@
     //valida comando
     if($conexao->query($sql) === TRUE){
         //sessao user cadastrado
-        $_SESSION['cadastrado'] = true;
+        $_SESSION['cadastroSucesso'] = true;
+
+
     }
 
     //encerrar conexao
     $conexao->close();
 
-    header('Location: ../../view/Cadastro/formacoes.php');
+    header('Location: ../../view/Login/login.php');
     exit();

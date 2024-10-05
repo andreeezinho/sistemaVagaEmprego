@@ -48,11 +48,6 @@
                                 <input type="text" name="cargaHoraria" id="cargaHoraria" class="form-control">
                                 <label for="cargaHoraria">Carga horária</label>
                             </div>
-                            
-                            <div class="form-floating mb-2">
-                                <textarea name="descricaoVaga" id="descricaoVaga" class="form-control textarea"></textarea>
-                                <label for="descricaoVaga">Insira a descrição da vaga</label>
-                            </div>
         
                             <div class="d-sm-flex justify-content-center">
                                 <div class="col-sm-6 mx-sm-3 my-2">
@@ -80,12 +75,17 @@
                             <div class="form-floating mb-2">
                                 <select class="form-control" name="statusVaga" id="statusVaga">
                                     <option disabled selected>Não selecionado</option>
-                                    <option value="aberta">Aberta</option>
-                                    <option value="espera">Em espera</option>
-                                    <option value="fechada">Fechada</option>
+                                    <option value="Aberta">Aberta</option>
+                                    <option value="Em espera">Em espera</option>
+                                    <option value="Fechada">Fechada</option>
                                 </select>
 
                                 <label for="statusVaga">Selecione o status da vaga</label>
+                            </div>
+
+                            <div class="text-left">
+                                <label class="text-muted ml-2 small" for="descricaoVaga">Insira a descrição da vaga</label>
+                                <textarea name="descricaoVaga" id="descricaoVaga" class="form-control pb-5" style="height: 400px;"></textarea>
                             </div>
 
                             <div class="text-center">
@@ -120,14 +120,13 @@
                         <p class="text-muted mb-3"><i class="bi-person-rolodex"></i> Criada por: <?=$info['nomeAdministrador'] ?></p>
                         <p class="text-muted mb-1"><i class="bi-clipboard"></i> Status: <?=$info['statusVaga'] ?></p>
                         <p class="text-muted mb-1"><i class="bi-person-fill"></i> Vagas disponíveis: <?=$info['quantidadeVaga'] ?></p>
-                        <p class="text-muted mb-3"><i class="bi-people-fill"></i> Candidatos: POR ENQUANTO AINDA NAO </p>
                         <p class="text-muted mb-1"><i class="bi-calendar3"></i> Início: <?=date('d/m/y', strtotime($info['dataAberta'])) ?></p>
                         <p class="text-muted"><i class="bi-calendar3"></i> Encerramento: <?=date('d/m/y', strtotime($info['dataFechamento'] ))?></p>
-                        <p class="text-muted "><?=$info['descricaoVaga'] ?></p>
+                        <p class="text-muted text-justify"><?=nl2br($info['descricaoVaga']) ?></p>
                     </div>
                     
-                    <div class="col-12 col-md-2 mx-auto text-center d-flex flex-column justify-content-center">
-                        <a href="###" class="btn btn-success align-itens-end mb-1"><i class="bi-eye-fill"></i> Ver candidatos</a>
+                    <div class="col-12 col-md-2 mx-auto text-center d-flex flex-column justify-content-start">
+                        <a href="../../view/Adm/candidatos.php?idVaga=<?=$info['idVaga'] ?>" class="btn btn-success align-itens-end mb-1"><i class="bi-eye-fill"></i> Ver candidatos</a>
                         <a href="###" class="btn btn-primary align-itens-end mb-1"><i class="bi-pencil-fill"></i> Editar</a>
                         <a href="###" class="btn btn-danger align-itens-end mb-1"><i class="bi-trash-fill"></i> Excluir</a>
                     </div>

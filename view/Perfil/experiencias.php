@@ -63,7 +63,7 @@
 
                             <div class="text-center">
                                 <button type="submit" class="btn btn-warning mt-4"><i class="bi-plus"></i> Adicionar</button>
-                                <button type="submit" class="btn btn-primary mt-4">Concluir <i class="bi-arrow-right"></i></button>
+                                <a href="../Home/home.php" type="submit" class="btn btn-primary mt-4">Sair <i class="bi-arrow-right"></i></a>
                             </div>
                         </form>
                     </div>

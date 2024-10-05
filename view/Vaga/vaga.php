@@ -61,7 +61,7 @@
 
                     <div class="text-justify border-bottom pb-3 mb-4">
                         <h5 class="mb-4">Descrição da vaga</h5>
-                        <p><?=$info['descricaoVaga'] ?></p>
+                        <p><?=nl2br($info['descricaoVaga']) ?></p>
                     </div>
 
                     <div>

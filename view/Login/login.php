@@ -24,6 +24,7 @@
             <div class="col-sm-3 p-3 text-center position-absolute start-50 top-50 translate-middle">
                 <?php
                     include('../../assets/alerts/loginAlert.php');
+                    include('../../assets/alerts/cadastroAlert.php');
                 ?>
                 <div class="card">
                     <div class="card-body">

@@ -18,6 +18,10 @@
                     </li>
 
                     <li class="nav-item mr-2">
+                        <a class="nav-link" href="../Perfil/minhasVaga.php"><i class="bi-person-fill"></i> Minhas vagas</a>
+                    </li>
+
+                    <li class="nav-item mr-2">
                         <a class="nav-link" href="../Perfil/perfil.php"><i class="bi-file-person-fill"></i> Meu Perfil</a>
                     </li>
 

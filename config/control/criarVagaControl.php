@@ -8,7 +8,7 @@
     $nomeVaga = mysqli_real_escape_string($conexao, trim($_POST['nomeVaga']));
     $tipoVaga = mysqli_real_escape_string($conexao, trim($_POST['tipoVaga']));
     $cargaHoraria = mysqli_real_escape_string($conexao, trim($_POST['cargaHoraria']));
-    $descricaoVaga = mysqli_real_escape_string($conexao, trim($_POST['descricaoVaga']));
+    $descricaoVaga = mysqli_real_escape_string($conexao, $_POST['descricaoVaga']);
     $quantidadeVaga = mysqli_real_escape_string($conexao, trim($_POST['quantidadeVaga']));
     $dataFechamento = mysqli_real_escape_string($conexao, trim($_POST['dataFechamento']));
     $statusVaga = mysqli_real_escape_string($conexao, trim($_POST['statusVaga']));

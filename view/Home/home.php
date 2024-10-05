@@ -1,5 +1,7 @@
 <?php
     session_start();
+
+    include('../../config/db.php');
 ?>
 
 <!DOCTYPE html>
@@ -112,19 +114,43 @@
          <div class="row justify-content-center">
             <h2 class="text-center mb-5 py-3 border-top border-bottom">Nossas Vagas</h2>
 
-            <div class="col-11 col-md-12 d-md-flex border rounded p-3 mb-3">
-                <div class="col-12 col-md-8">
-                    <h4>Exemplo de vaga disponível</h4>
-                    <h6>Loja que vai ser</h6>
-                    <p class="mb-2">Carga horária</p>
-                    <p class="text-muted">Aqui vai alguma descrição da vaga se tiver, se nao tiver tudo bem...</p>
-                    <p class="text-muted mt-4"><i class="bi-calendar3"></i> 24/09/24</p>
+            <?php
+                //comando sql
+                $sql = "select * from vaga";
+
+                //executar
+                $query = mysqli_query($conexao, $sql);
+
+                //verificar
+                if(mysqli_fetch_assoc($query)){
+                    //printar
+                    foreach($query as $vaga){
+            ?>
+                <div class="col-11 col-md-12 d-md-flex border rounded p-3 mb-3">
+                    <div class="col-12 col-md-8">
+                        <h4><?=$vaga['nomeVaga'] ?></h4>
+                        <h6><i class="bi-pass-fill"></i> Tipo de vaga: <?=$vaga['tipoVaga'] ?></h6>
+                        <p class="mb-2"><i class="bi-clock-fill"></i> Carga horária: <?=$vaga['cargaHoraria'] ?></p>
+                        <p class="mb-2"><i class="bi-people-fill"></i> Vagas disponíveis: <?=$vaga['quantidadeVaga'] ?></p>
+                        <p class="text-muted mt-4"><i class="bi-calendar3"></i> Status: <?=$vaga['statusVaga'] ?></p>
+                        <p class="text-muted mt-0"><i class="bi-calendar3"></i> Valida até: <?=date('d/m/y', strtotime($vaga['dataFechamento'])) ?></p>
+                    </div>
+                    
+                    <div class="col-12 col-md-4 text-end">
+                        <a href="../Vaga/vaga.php?idVaga=<?=$vaga['idVaga'] ?>" class="btn btn-primary align-itens-end"><i class="bi-box-arrow-up-right"></i> Candidatar-se</a>
+                    </div>
                 </div>
-                
-                <div class="col-12 col-md-4 text-end">
-                    <a href="../Vaga/vaga.php" class="btn btn-primary align-itens-end"><i class="bi-box-arrow-up-right"></i> Candidatar-se</a>
-                </div>
-            </div>
+            <?php
+                    }
+                }else{
+                    echo '
+                           <div class="alert alert-primary"> 
+                                <h2 class="text-center mb-5 py-4 my-auto">Não há vagas disponíveis por enquanto...</h2>  
+                                <h6 class="text-center mt-2 text-muted">Fique ligado nas nossas redes sociais para as novas vagas</h6>  
+                           </div>   
+                    ';
+                }
+            ?>
      </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

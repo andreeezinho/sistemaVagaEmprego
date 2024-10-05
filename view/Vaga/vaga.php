@@ -22,40 +22,70 @@
     
     <div class="container mt-5">
         <div class="row justify-content-center p-5">
-            <div class="col-12">
-                <div class="my-4 border-bottom">
-                    <div class="text-start">
-                        <h3>
-                            Nome da vaga
-                            <a href="##" class="btn btn-primary float-sm-end"><i class="bi-box-arrow-up-right"></i> Candidatar-se</a>
-                        </h3>
-                        
-                        <p class="mt-3"><i class="bi-calendar"></i> Publicação da vaga: 24/09/24</p>
+            <?php
+                include('../../assets/alerts/vagaAlert.php');
+
+                //verifica se realmente existe vaga
+                if(isset($_GET['idVaga'])){
+                    //pegar id da vaga
+                    $idVaga = $_GET['idVaga'];
+
+                    //comando sql
+                    $sql = "select * from vaga where idVaga = '$idVaga'";
+
+                    //executar comando
+                    $query = mysqli_query($conexao, $sql);
+
+                    //verifica se consulta retorna alguma linha
+                    if(mysqli_num_rows($query) > 0){
+                        //pega valores do banco de dados
+                        $info = mysqli_fetch_array($query);
+            ?>
+                <div class="col-12">
+                    <div class="my-4 border-bottom">
+                        <div class="text-start">
+                            <h2>
+                                <?=$info['nomeVaga'] ?>
+                                <a href="./candidatar.php?idVaga=<?=$info['idVaga'] ?>" class="btn btn-primary float-sm-end"><i class="bi-box-arrow-up-right"></i> Candidatar-se</a>
+                            </h2>
+                            
+                            <p class="mt-3"><i class="bi-calendar"></i> Publicação da vaga: <?=date('d/m/y', strtotime($info['dataAberta'])) ?></p>
+                        </div>
+                    </div>
+
+                    <div class="my-4 border-bottom">
+                        <p class="text-muted"><i class="bi-people-fill"></i> Vagas disponíveis: <?=$info['quantidadeVaga'] ?></p>
+                        <p class="text-muted"><i class="bi-suitcase-lg-fill"></i> Tipo de vaga: <?=$info['tipoVaga'] ?></p>
+                        <p class="text-muted"><i class="bi-clock-fill"></i> Carga horária: <?=$info['cargaHoraria'] ?></p>
+                    </div>
+
+                    <div class="text-justify border-bottom pb-3 mb-4">
+                        <h5 class="mb-4">Descrição da vaga</h5>
+                        <p><?=$info['descricaoVaga'] ?></p>
+                    </div>
+
+                    <div>
+                        <h5 class="mb-4">Processo de Contratação</h5>
+                        <ul>
+                            <li>Cadastro</li>
+                            <li>Aprovação</li>
+                            <li>Entrevista</li>
+                            <li>Análise</li>
+                            <li>Contratação</li>
+                        </ul>
                     </div>
                 </div>
-
-                <div class="my-4 border-bottom">
-                    <p class="text-muted"><i class="bi-people-fill"></i> Vagas disponíveis: 2</p>
-                    <p class="text-muted"><i class="bi-suitcase-lg-fill"></i> Tipo de vaga: CLT</p>
-                    <p class="text-muted"><i class="bi-clock-fill"></i> Carga horária: 8h</p>
-                </div>
-
-                <div class="text-justify border-bottom pb-3 mb-4">
-                    <h5 class="mb-4">Descrição da vaga</h5>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis quae, inventore at sit modi voluptates sequi dolorem libero, in consequuntur voluptatem rem ipsam, optio molestias. Blanditiis omnis voluptas voluptatem ducimus? Et voluptas vitae similique dicta tempora odio omnis unde delectus reiciendis in at dolores, doloremque dolorum architecto dolore praesentium ea, porro magni perferendis eveniet veniam, sint voluptates perspiciatis? Doloremque laborum nostrum temporibus blanditiis magni perferendis amet nulla labore earum? Tempore ducimus incidunt molestias laboriosam esse alias natus dolorem ut, ipsam mollitia rerum praesentium quam eius? Quia tempora quod aperiam dignissimos, vitae necessitatibus consequatur alias sunt animi molestias mollitia velit dolores molestiae aliquam exercitationem est laboriosam blanditiis vero. Fugit necessitatibus et nesciunt error perferendis nemo aliquid consequuntur voluptate, velit, dolorem accusamus quae expedita modi repudiandae, quos dicta quibusdam ea. Aperiam praesentium dolorem eos sit sint nemo, soluta deserunt veniam commodi minus? At nam officiis debitis laudantium natus iure ab, corporis cupiditate vitae. Fugiat nam quaerat quod sunt veritatis illum mollitia alias possimus, nobis quos dolor aperiam quas placeat modi sed eos corrupti numquam ratione odio voluptatibus eum suscipit repellendus pariatur. Voluptatum similique maiores magni corporis quibusdam! Mollitia repudiandae quod, natus at iste suscipit eligendi obcaecati incidunt praesentium quibusdam placeat quaerat nam cumque doloribus quasi sint quisquam deserunt fuga saepe veniam ex cum sit neque. Dolorum saepe similique esse possimus doloribus pariatur provident totam molestiae ab, fugit adipisci voluptatem odit reiciendis, recusandae ipsam impedit ducimus! Quae suscipit quas aliquid dolores velit saepe facere molestias rem! Ad, consequuntur id officia nam provident debitis exercitationem explicabo? Dolores, deserunt. Voluptate.</p>
-                </div>
-
-                <div>
-                    <h5 class="mb-4">Processo de Contratação</h5>
-                    <ul>
-                        <li>Cadastro</li>
-                        <li>Aprovação</li>
-                        <li>Entrevista</li>
-                        <li>Análise</li>
-                        <li>Contratação</li>
-                    </ul>
-                </div>
-            </div>
+            <?php
+                    }
+                }else{
+                    echo '
+                        <div class="alert alert-primary"> 
+                                <h2 class="text-center mb-5 py-4 my-auto">Ops! Vaga não existente...</h2>  
+                                <h6 class="text-center mt-2 text-muted">Volte para a tela inicial e verifique a vaga</h6>  
+                           </div>  
+                    ';
+                }
+            ?>
         </div>
     </div>
 

@@ -43,7 +43,7 @@
                             </div>
 
                             <div class="text-center small mt-2">
-                                <p class="text-muted"><i class="bi-eye-fill"></i> Acesso não autorizado será passível de rastreio</p>
+                                <p class="text-muted"><i class="bi-incognito"></i> Acesso não autorizado será passível de rastreio</p>
                             </div>
                         </form>
                     </div>

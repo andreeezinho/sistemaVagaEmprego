@@ -4,12 +4,22 @@
             VAGAS DE EMPREGO
         </a>
 
+        
+
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Alterna navegação">
         <span class="navbar-toggler-icon"></span>
         </button>
     
         <div class="collapse navbar-collapse" id="menu">
-            <span class="navbar-nav mr-auto"></span>
+            <div class="navbar-nav mr-auto">
+                <?php
+                    if(isset($_SESSION['logado'])){
+                ?>
+                    <p class="nav-link p-0 my-auto">Olá, <?=$_SESSION['nomeUsuario'] ?></p>
+                <?php
+                    }
+                ?>
+            </div>
 
             <div class="inline my-2 my-lg-0">
                 <ul class="navbar-nav mr-auto">

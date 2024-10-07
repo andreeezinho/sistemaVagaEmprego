@@ -7,6 +7,8 @@
     session_start();
 
     include('../../config/db.php');
+
+    $idVaga = $_GET['idVaga'];
 ?>
 
 <!DOCTYPE html>
@@ -21,16 +23,41 @@
     <title>Candidatos</title>
 </head>
 <body>
+    <?php
+        include('./components/navbar.php');
+    ?>
+
     <div class="container mt-5">
         <div class="row justify-content-center">
-            <h2 class="mt-5 text-center">Candidatos</h2>
-            <h6 class="text-muted text-center mb-5">Nome da vaga</h6>
+            <h2 class="mt-5 pt-3">
+                <a href="./criarVaga.php" class="btn btn-primary float-left"><i class="bi-arrow-left"></i> Voltar</a>
+                <h2 class="text-center border-bottom pb-2">Candidatos</h2>
+            </h2>
+            
+
+            <?php
+                //titulo do nome da vaga
+                
+                //comando sql
+                $sql = "select nomeVaga from vaga where idVaga = '$idVaga'";
+
+                //executar
+                $query = mysqli_query($conexao, $sql);
+
+                //verificar
+                if(mysqli_num_rows($query) != 0){
+                    $nomeVaga = mysqli_fetch_array($query);
+            ?>
+                <h4 class="text-primary text-center mb-5">Vaga: <?=$nomeVaga['nomeVaga'] ?></h4>
+            <?php
+                }else{
+                    echo "Nome da vaga não encontrada...";
+                }
+            ?>
 
             <div class="col-11 col-sm-12">
 
             <?php
-                $idVaga = $_GET['idVaga'];
-
                 //comando sql
                 $sql = "select *, nomeUsuario, email, telefone, nomeVaga from usuarioVaga 
                 inner join usuario on usuarioVaga.idUsuario = usuario.idUsuario 
@@ -44,23 +71,30 @@
                     //printar
                     foreach($query as $vaga){
             ?>
-                <div class="card">
+                <div class="card mb-2">
                     <div class="card-body">
                         <h3 class="mb-3"><i class="bi-person-fill"></i> <?=$vaga['nomeUsuario'] ?></h3>
                         <p class="text-muted mb-1 ml-1"><i class="bi-calendar3"></i> Candidatado em: <?=date('d/m/y', strtotime($vaga['dataInscrito'])) ?></p>
                         <p class="text-muted mb-1 ml-1"><i class="bi-envelope"></i> Email: <?=$vaga['email'] ?></p>
-                        <p class="text-muted mb-0 ml-1"><i class="bi-telephone-fill"></i> <?=$vaga['telefone'] ?></p>
+                        <p class="text-muted mb-0 ml-1"><i class="bi-telephone-fill"></i>Telefone:  <?=$vaga['telefone'] ?></p>
                     </div>
 
                     <div class="card-body text-center mt-0">
-                        <a href="./candidatosDetalhes.php?idUsuario=<?=$vaga['idUsuario'] ?>" class="btn btn-success align-itens-end mb-1"><i class="bi-eye-fill"></i> Visualizar candidato</a>
+                        <a href="./candidatosDetalhes.php?idUsuario=<?=$vaga['idUsuario'] ?>&idVaga=<?=$idVaga ?>" class="btn btn-success align-itens-end mb-1"><i class="bi-eye-fill"></i> Visualizar candidato</a>
                     </div>
                 </div>
 
             <?php
                     }
                 }else{
-                    echo 'nao tem nenhum ainda';
+                    echo '
+                            <div class="card mb-2">
+                                <div class="card-body">
+                                    <h2 class="mb-3">Não há usuários candidatados</h3>
+                                </div>
+
+                            </div>
+                        ';
                 }
             ?>
             </div>

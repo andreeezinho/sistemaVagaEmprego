@@ -45,7 +45,7 @@
                             <h2 class="border-bottom pb-2 d-flex flex-column flex-sm-row">
                                 <?=$usuario['nomeUsuario'] ?>
                                 
-                                <a href="###" class="btn btn-success my-1 ml-sm-auto"><i class="bi-bookmark-plus"></i> Marcar Entrevista</a>
+                                <a href="./criarEntrevista.php?idUsuario=<?=$idUsuario ?>&idVaga=<?=$idVaga ?>" class="btn btn-success my-1 ml-sm-auto"><i class="bi-bookmark-plus"></i> Marcar Entrevista</a>
                                 <button type="button" class="btn btn-primary my-1 ml-sm-2"><i class="bi-download"></i> Baixar CV</button>
                             </h2>
 

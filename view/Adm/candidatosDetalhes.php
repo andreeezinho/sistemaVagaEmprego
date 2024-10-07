@@ -26,7 +26,7 @@
     <div class="container mt-5">
         <div class="row justify-content-center pt-5">
             <div class="col-11 col-sm-12">
-                <a href="./candidatos.php?idVaga=<?=$idVaga ?>" class="btn btn-primary mb-3"><i class="bi-arrow-left"></i> Voltar</a>
+                <a href="./candidatos.php?idVaga=<?=$idVaga ?>" class="btn btn-primary mt-2 mt-sm-0 mb-3"><i class="bi-arrow-left"></i> Voltar</a>
                 
                 <div class="card">
                     <card class="card-body">
@@ -42,15 +42,15 @@
                                 //imprimir
                                 $usuario = mysqli_fetch_array($query);
                         ?>
-                            <h2 class="border-bottom pb-2">
+                            <h2 class="border-bottom pb-2 d-flex flex-column flex-sm-row">
                                 <?=$usuario['nomeUsuario'] ?>
                                 
-                                <a href="###" class="btn btn-success mx-1 float-right"><i class="bi-bookmark-plus"></i> Marcar Entrevista</a>
-                                <button type="button" class="btn btn-primary mx-1 float-right"><i class="bi-download"></i> Baixar CV</button>
+                                <a href="###" class="btn btn-success my-1 ml-sm-auto"><i class="bi-bookmark-plus"></i> Marcar Entrevista</a>
+                                <button type="button" class="btn btn-primary my-1 ml-sm-2"><i class="bi-download"></i> Baixar CV</button>
                             </h2>
 
                             <div class="mt-3">
-                                <h3 class="text-primary mb-3">Informações</h3>
+                                <h4 class="text-primary mb-3">Informações</h4>
 
                                 <p class="text-muted mt-2"><i class="bi-credit-card-2-front"></i> CPF: <?=$usuario['cpf'] ?></p>
                                 <p class="text-muted mt-2"><i class="bi-envelope"></i> Email: <?=$usuario['email'] ?></p>
@@ -61,7 +61,7 @@
 
 
                         <div class="mt-5">
-                            <h3 class="text-primary">Formação Acadêmica</h3>
+                            <h4 class="text-primary">Formação Acadêmica</h4>
 
                             <?php
                                 $sql = "select * from formacao where idUsuario = '$idUsuario'";
@@ -90,7 +90,7 @@
                         </div>
 
                         <div class="mt-5">
-                            <h3 class="text-primary">Experiências Profissionais</h3>
+                            <h4 class="text-primary">Experiências Profissionais</h4>
 
                             <?php
                                 $sql = "select * from experiencia where idUsuario = '$idUsuario'";
@@ -104,7 +104,7 @@
                                     <div class="col-12 col-md-8">
                                         <h4><?=$experiencia['nomeEmpresa'] ?></h4>
                                         <p class="text-muted mt-3"><b>Cargo: </b><?=$experiencia['cargo'] ?></p>
-                                        <p class="text-muted mt-3"><i class="bi-calendar3"></i> Data de contratação: <?=date('d/m/y', strtotime($experiencia['dataContratado'])) ?></p>
+                                        <p class="text-muted mt-3"><i class="bi-calendar3"></i> Contratação: <?=date('d/m/y', strtotime($experiencia['dataContratado'])) ?></p>
                                         <p class="text-muted"><i class="bi-calendar3"></i> Data de Saída: <?=date('d/m/y', strtotime($experiencia['dataDespedido'])) ?></p>
                                     </div>
                                 </div>

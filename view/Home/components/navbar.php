@@ -13,9 +13,11 @@
         <div class="collapse navbar-collapse" id="menu">
             <div class="navbar-nav mr-auto">
                 <?php
+                    require('../../config/control/verificaHora.php');
+
                     if(isset($_SESSION['logado'])){
                 ?>
-                    <p class="nav-link p-0 my-auto">Olá, <?=$_SESSION['nomeUsuario'] ?></p>
+                    <p class="nav-link p-0 my-auto"> <?=verificaHora() . $_SESSION['nomeUsuario'] ?></p>
                 <?php
                     }
                 ?>

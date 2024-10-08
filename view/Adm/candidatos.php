@@ -80,7 +80,8 @@
                     </div>
 
                     <div class="card-body text-center mt-0">
-                        <a href="./candidatosDetalhes.php?idUsuario=<?=$vaga['idUsuario'] ?>&idVaga=<?=$idVaga ?>" class="btn btn-success align-itens-end mb-1"><i class="bi-eye-fill"></i> Visualizar candidato</a>
+                        <a href="./candidatosDetalhes.php?idUsuario=<?=$vaga['idUsuario'] ?>&idVaga=<?=$idVaga ?>" class="btn btn-success align-itens-end mb-1"><i class="bi-eye-fill"></i> Visualizar</a>
+                        <a href="./candidatosDetalhes.php?idUsuario=<?=$vaga['idUsuario'] ?>&idVaga=<?=$idVaga ?>" class="btn btn-danger align-itens-end mb-1"><i class="bi-trash-fill"></i> Remover</a>
                     </div>
                 </div>
 

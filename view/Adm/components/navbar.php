@@ -14,11 +14,11 @@
             <div class="inline my-2 my-lg-0">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item mr-2">
-                        <a class="nav-link" href="../view/Home/home.php"><i class="bi-house-fill"></i> Início</a>
+                        <a class="nav-link" href="./criarVaga.php"><i class="bi-house-fill"></i> Início</a>
                     </li>
 
                     <li class="nav-item mr-2">
-                        <a class="nav-link" href="../Perfil/perfil.php"><i class="bi-file-person-fill"></i> Meu Perfil</a>
+                        <a class="nav-link" href="./entrevistas.php"><i class="bi-people-fill"></i> Entrevistas</a>
                     </li>
 
                     <!-- SE TIVER LOGADO, MOSTRAR BOTAO DE SAIR, SE NAO MOSTRAR BOTAO DE LOGIN -->

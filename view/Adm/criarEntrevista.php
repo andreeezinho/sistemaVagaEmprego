@@ -27,10 +27,13 @@
     <div class="container">
         <div class="row pt-5 justify-content-center">
             <div class="col-11 col-sm-4 mt-5 position-absolute start-50 top-50 translate-middle">
+                <a href="./candidatosDetalhes.php?idVaga=<?=$idVaga ?>&idUsuario=<?=$idUsuario ?>" class="btn btn-primary mt-2 mt-sm-0 mb-3"><i class="bi-arrow-left"></i> Voltar</a>
+
+                <?php
+                    include('../../assets/alerts/admAlert.php');
+                ?>
+
                 <div class="card">
-                    <?php
-                        include('../../assets/alerts/admAlert.php');
-                    ?>
                     <div class="card-body">
                         <h3 class="text-center">Marcar Entrevista</h3>
                         <p class="text-center small text-muted">Selecione as informações para a marcação de entrevista</p>
@@ -45,12 +48,12 @@
                                     $usuario = mysqli_fetch_array($query);
                             ?>
                                 <div class="form-floating mb-2">
-                                    <input type="text" name="nomeUsuario" value="<?=$usuario['nomeUsuario'] ?>" id="nomeUsuario" class="form-control" disabled>
+                                    <input type="text" name="nomeUsuario" value="<?=$usuario['nomeUsuario'] ?>" id="nomeUsuario" class="form-control" readonly>
                                     <label for="nomeUsuario">Candidato </label>
                                 </div>
 
                                 <div class="form-floating mb-2">
-                                    <input type="text" name="email" value="<?=$usuario['email'] ?>" id="email" class="form-control" disabled>
+                                    <input type="text" name="email" value="<?=$usuario['email'] ?>" id="email" class="form-control" readonly>
                                     <label for="email">Email </label>
                                 </div>
                             <?php
@@ -60,7 +63,7 @@
                             ?>
 
                             <div class="form-floating mb-2">
-                                <input type="text" name="nomeAdministrador" value="<?=$nomeAdministrador ?>" id="nomeAdministrador" class="form-control" disabled>
+                                <input type="text" name="nomeAdministrador" value="<?=$nomeAdministrador ?>" id="nomeAdministrador" class="form-control" readonly>
                                 <label for="nomeAdministrador">Nome entrevistador</label>
                             </div>
 

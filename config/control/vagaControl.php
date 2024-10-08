@@ -24,7 +24,7 @@
     }
 
     //comando sql
-    $sql = "insert into usuarioVaga (idUsuario, idVaga) values ($idUsuario, $idVaga)";
+    $sql = "insert into usuarioVaga (idUsuario, idVaga, dataInscrito) values ($idUsuario, $idVaga, NOW())";
 
     //executar query
     $query = mysqli_query($conexao, $sql);

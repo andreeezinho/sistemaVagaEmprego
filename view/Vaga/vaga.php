@@ -22,6 +22,7 @@
     
     <div class="container mt-5">
         <div class="row justify-content-center p-5">
+
             <?php
                 include('../../assets/alerts/vagaAlert.php');
 
@@ -42,7 +43,9 @@
                         $info = mysqli_fetch_array($query);
             ?>
                 <div class="col-12">
-                    <div class="my-4 border-bottom">
+                    <a href="../Home/home.php" class="btn btn-primary float-left"><i class="bi-arrow-left"></i> Voltar</a>
+                    
+                    <div class="mb-4 mt-5 border-bottom">
                         <div class="text-start">
                             <h2>
                                 <?=$info['nomeVaga'] ?>

@@ -122,7 +122,6 @@
                         <p class="text-muted mb-1"><i class="bi-person-fill"></i> Vagas disponíveis: <?=$info['quantidadeVaga'] ?></p>
                         <p class="text-muted mb-1"><i class="bi-calendar3"></i> Início: <?=date('d/m/y', strtotime($info['dataAberta'])) ?></p>
                         <p class="text-muted"><i class="bi-calendar3"></i> Encerramento: <?=date('d/m/y', strtotime($info['dataFechamento'] ))?></p>
-                        <p class="text-muted text-justify"><?=nl2br($info['descricaoVaga']) ?></p>
                     </div>
                     
                     <div class="col-12 col-md-2 mx-auto text-center d-flex flex-column justify-content-start">

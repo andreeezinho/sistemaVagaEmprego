@@ -17,7 +17,7 @@
 
                     if(isset($_SESSION['logado'])){
                 ?>
-                    <p class="nav-link p-0 my-auto"> <?=verificaHora() . $_SESSION['nomeUsuario'] ?></p>
+                    <p class="nav-link p-0 my-auto"> <?=verificaHora($_SESSION['nomeUsuario']) ?></p>
                 <?php
                     }
                 ?>

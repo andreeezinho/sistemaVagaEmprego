@@ -20,7 +20,7 @@
     }
 
     //comando sql
-    $sql = "select count(*) as verificaUsuario from usuario where cpf = '$cpf'";
+    $sql = "select count(*) as verificaUsuario, cpf from usuario where cpf = '$cpf'";
 
     //executar
     $query = mysqli_query($conexao, $sql);
@@ -35,6 +35,16 @@
         header('Location: ../../view/Cadastro/cadastro.php');
         exit();
     }
+
+    //veririca tamanho do cpf
+    if(strlen($row['cpf']) < 14){
+        $_SESSION['cpfInvalido'] = 'CPF inválido, tente novamente';
+
+        header('Location: ../../view/Cadastro/cadastro.php');
+        exit();
+    }
+
+
     //se nao, executa outro comando no sql
 
     $sql = "insert into usuario (nomeUsuario, cpf, telefone, email, senha, endereco, dataNascimento, dataCadastro) 
